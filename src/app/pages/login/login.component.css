@@ -1,0 +1,9 @@
+div {
+  overflow: hidden;
+}
+
+mat-card {
+  min-width: 350px;
+  width: 20vw;
+  margin: 50px auto;
+}

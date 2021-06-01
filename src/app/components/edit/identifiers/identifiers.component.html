@@ -1,0 +1,43 @@
+<mat-card [formGroup]="form">
+  <mat-card-header>
+    <mat-card-title>Identifiers</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div formArrayName="identifier">
+      <div *ngFor="let id of identifiers.controls; let i=index" [formGroupName]="i">
+        <mat-form-field>
+          <mat-label>Use</mat-label>
+          <mat-select formControlName="use">
+            <ng-container *ngFor="let use of idUses">
+              <mat-option  [value]="use">
+                {{use}}
+              </mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let type of idTypes" [value]="type">
+              {{type}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Value</mat-label>
+          <input matInput formControlName="value"/>
+        </mat-form-field>
+        <div style="display:inline-block">
+          <mat-checkbox matInput formControlName="active">Active</mat-checkbox>
+        </div>
+        <button mat-icon-button type="button" color="warn" (click)="deleteIdentifier(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button type="button" (click)="addIdentifier()">
+        <mat-icon>add</mat-icon>
+        Add identifier
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

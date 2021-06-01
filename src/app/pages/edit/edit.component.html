@@ -1,0 +1,41 @@
+<form [formGroup]="form" id="form" (ngSubmit)="onSubmit()">
+  <app-identifiers [form]="form" #identifierForm></app-identifiers>
+  <app-names [form]="form" #nameForm></app-names>
+  <app-addresses [form]="form" #addressForm></app-addresses>
+  <app-telecom [form]="form" #telecomForm></app-telecom>
+  <app-qualifications [form]="form" #qualificationForm></app-qualifications>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Gender and birth date
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-label>Practitioner status</mat-label>
+        <mat-checkbox matInput formControlName="active">Active</mat-checkbox>
+      </div>
+      <div>
+        <mat-label>Gender</mat-label>
+        <mat-radio-group formControlName="gender">
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-radio-button value="Female">Female</mat-radio-button>
+          <mat-radio-button value="Unspecified">Unspecifified</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field>
+        <mat-label>Birth date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-flat-button color="primary" form="form">
+        Save
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

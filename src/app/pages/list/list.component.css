@@ -1,0 +1,23 @@
+.mat-list .mat-list-item a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+.mat-list .mat-list-item .mat-list-icon {
+  float: left;
+  margin-right: 0.5em;
+}
+
+.mat-list .mat-list-item p span
+{
+  display: block;
+}
+
+.fab {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}

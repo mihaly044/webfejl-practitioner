@@ -1,0 +1,51 @@
+<mat-card [formGroup]="form">
+  <mat-card-header>
+    <mat-card-title>
+      Names
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div formArrayName="name">
+      <div *ngFor="let name of names.controls; let j=index" [formGroupName]="j">
+        <mat-form-field>
+          <mat-label>Use</mat-label>
+          <mat-select formControlName="use">
+            <mat-option *ngFor="let use of nameUses" [value]="use">
+              {{use}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Text</mat-label>
+          <input matInput placeholder="text" formControlName="text"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Family</mat-label>
+          <input matInput placeholder="family" formControlName="family"/>
+        </mat-form-field>
+        <div formArrayName="given">
+          <div *ngFor="let name of givenNames(j).controls; let k=index">
+            <mat-form-field>
+              <mat-label>Given name</mat-label>
+              <input matInput [formControlName]="k">
+            </mat-form-field>
+            <button type="button" mat-icon-button color="warn" (click)="deleteGivenName(j, k)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        <button mat-raised-button (click)="addGivenName(j)">
+          <mat-icon>add</mat-icon>
+          Add given name
+        </button>
+        <button mat-icon-button type="button" type="button" color="warn" (click)="deleteName(j)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button type="button" (click)="addName()">
+        <mat-icon>add</mat-icon>
+        Add name
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

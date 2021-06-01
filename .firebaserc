@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webfejl-practitioner": {
+      "hosting": {
+        "webfejl-practitioner": [
+          "webfejl-practitioner"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webfejl-practitioner"
+  }
+}

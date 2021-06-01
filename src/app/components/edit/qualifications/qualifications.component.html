@@ -1,0 +1,32 @@
+<mat-card [formGroup]="form">
+  <mat-card-header>
+    <mat-card-title>
+      Qualifications
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div formArrayName="qualification">
+      <div *ngFor="let qualification of qualifications.controls; let m=index" [formGroupName]="m">
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title"/>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Issuer" formControlName="issuer"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Issue date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="issuedOn">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-icon-button type="button" color="warn" (click)="deleteQualification(m)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button type="button" (click)="addQualification()">
+        <mat-icon>add</mat-icon>
+        Add qualification
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

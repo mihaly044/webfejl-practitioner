@@ -1,0 +1,24 @@
+<mat-card [formGroup]="form">
+  <mat-card-header>
+    <mat-card-title>
+      Addresses
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div formArrayName="address">
+      <div *ngFor="let address of addresses.controls; let l=index" [formGroupName]="l">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="text"/>
+        </mat-form-field>
+        <button mat-icon-button type="button" color="warn" (click)="deleteAddress(l)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button type="button" (click)="addAddress()">
+        <mat-icon>add</mat-icon>
+        Add address
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
